@@ -42,7 +42,7 @@ class GameController extends AbstractController
                 10 // Nombre de résultats par page
             );
 
-            $response = new Response($this->renderView('game/players.html.twig', [
+            $response = new Response($this->renderView($settings->get('theme') . '/game/players.html.twig', [
                 'joueurs' => $joueurs,
             ]));
 
@@ -52,7 +52,7 @@ class GameController extends AbstractController
 
             return $response;
         } else {
-            return $this->render('game/players.html.twig', [
+            return $this->render($settings->get('theme') . '/game/players.html.twig', [
                 'serveur_statut' => false
             ]);
         }
@@ -73,7 +73,7 @@ class GameController extends AbstractController
                 $joueurs_liste[] = ['name' => $joueur['Name'], 'level' => $joueur['Level'], 'exp' => $joueur['Exp'], 'expNext' => $joueur['ExperienceToNextLevel']];
             }
 
-            $response = new Response($this->renderView('game/online.html.twig', [
+            $response = new Response($this->renderView($settings->get('theme') . '/game/online.html.twig', [
                 'joueurs' => $joueurs_liste,
             ]));
 
@@ -83,11 +83,11 @@ class GameController extends AbstractController
 
             return $response;
 
-            return $this->render('game/online.html.twig', [
+            return $this->render($settings->get('theme') . '/game/online.html.twig', [
                 'joueurs' => $joueurs_liste,
             ]);
         } else {
-            return $this->render('game/online.html.twig', [
+            return $this->render($settings->get('theme') . '/game/online.html.twig', [
                 'serveur_statut' => false
             ]);
         }
@@ -111,7 +111,7 @@ class GameController extends AbstractController
 
             return $response;
         } else {
-            return $this->render('game/level_rank.html.twig', [
+            return $this->render($settings->get('theme') . '/game/level_rank.html.twig', [
                 'serveur_statut' => false
             ]);
         }
