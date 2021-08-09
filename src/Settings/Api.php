@@ -197,10 +197,10 @@ class Api
      */
     public function getAllUsers($page = 0)
     {
-        $user = $this->APIcall_GET($this->getServer(), $this->getToken(), '/api/v1/users?page=' . $page . '&pageSize=30');
+        $user = $this->APIcall_GET($this->getServer(), $this->getToken(), '/api/v1/users?page=' . $page . '&pageSize=100');
         if (isset($user['Message']) && $user['Message'] == "Authorization has been denied for this request.") {
             $this->setToken();
-            $user = $this->APIcall_GET($this->getServer(), $this->getToken(), '/api/v1/users?page=' . $page . '&pageSize=30');
+            $user = $this->APIcall_GET($this->getServer(), $this->getToken(), '/api/v1/users?page=' . $page . '&pageSize=100');
         }
 
         return $user;
@@ -290,10 +290,10 @@ class Api
     public function getAllPlayers($page)
     {
 
-        $joueurs = $this->APIcall_GET($this->getServer(), $this->getToken(), '/api/v1/players?page=' . $page . '&pageSize=30');
+        $joueurs = $this->APIcall_GET($this->getServer(), $this->getToken(), '/api/v1/players?page=' . $page . '&pageSize=100');
         if (isset($joueurs['Message']) && $joueurs['Message'] == "Authorization has been denied for this request.") {
             $this->setToken();
-            $joueurs = $this->APIcall_GET($this->getServer(), $this->getToken(), '/api/v1/players?page=' . $page . '&pageSize=30');
+            $joueurs = $this->APIcall_GET($this->getServer(), $this->getToken(), '/api/v1/players?page=' . $page . '&pageSize=100');
         }
         return $joueurs;
     }
