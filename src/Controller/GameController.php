@@ -24,16 +24,7 @@ class GameController extends AbstractController
 
         if ($serveur_statut['success']) {
 
-            $joueurs = $settings->getCache('game.playersList');
-
-            $joueurs_liste = [];
-
-            foreach ($joueurs as $joueur) {
-
-                if ($joueur['Level'] >= 1 && $joueur['Name'] != "Admin") {
-                    $joueurs_liste[] = ['user' => $joueur['UserId'], 'name' => $joueur['Name'], 'level' => $joueur['Level'], 'exp' => $joueur['Exp'], 'expNext' => $joueur['ExperienceToNextLevel']];
-                }
-            }
+            $joueurs_liste =  json_decode(file_get_contents($this->getParameter('cache_json').'players_list.json'));
 
 
             $joueurs = $paginator->paginate(
@@ -100,9 +91,10 @@ class GameController extends AbstractController
     {
         $serveur_statut = $api->ServeurStatut();
         if ($serveur_statut['success']) {
+            $playersList = json_decode(file_get_contents($this->getParameter('cache_json').'lvl.json'));
 
             $response = new Response($this->renderView('game/level_rank.html.twig', [
-                'joueurs' => $settings->getCache('game.rankNiveau'),
+                'joueurs' => $playersList,
             ]));
 
             $response->setPublic();
@@ -112,7 +104,8 @@ class GameController extends AbstractController
             return $response;
         } else {
             return $this->render($settings->get('theme') . '/game/level_rank.html.twig', [
-                'serveur_statut' => false
+                'serveur_statut' => false,
+                'joueurs' => []
             ]);
         }
     }
