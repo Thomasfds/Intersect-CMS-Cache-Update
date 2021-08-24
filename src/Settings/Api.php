@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Intersect CMS Unleashed
+ * 2.2 Cache Update
+ * Last modify : 24/08/2021 at 20:21
+ */
+
 namespace App\Settings;
 
 use App\Entity\CmsSettings;
