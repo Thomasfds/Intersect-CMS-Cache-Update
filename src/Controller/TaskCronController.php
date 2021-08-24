@@ -63,10 +63,9 @@ class TaskCronController extends AbstractController
 
 
         // Cache all players with necessary data, clanListNext in true
-        if ($allPlayerNext && $allPlayers->isHit() or !$allPlayers->isHit()) {
+        if ($allPlayers->isHit() or !$allPlayers->isHit()) {
             
             $joueurs_liste = [];
-
 
             foreach ($allPlayers->get() as $joueur) {
                 if ($joueur['Level'] >= 1 && $joueur['Name'] != "Admin") {
@@ -90,7 +89,7 @@ class TaskCronController extends AbstractController
         }
 
     
-        if ($rankLevelNext && $rankNiveau->isHit() or !$rankNiveau->isHit()) {
+        if ($rankNiveau->isHit() or !$rankNiveau->isHit()) {
             $getRank = $api->getRank(0);
 
             $total = $getRank['Total'];
