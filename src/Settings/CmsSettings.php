@@ -4,6 +4,8 @@
  * Intersect CMS Unleashed
  * 2.2 Cache Update
  * Last modify : 24/08/2021 at 20:21
+ * Author : XFallSeane
+ * Website : https://intersect.thomasfds.fr
  */
 
 namespace App\Settings;
