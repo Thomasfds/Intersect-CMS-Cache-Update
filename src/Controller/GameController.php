@@ -52,7 +52,7 @@ class GameController extends AbstractController
     /**
      * @Route("/online-players", name="game.players.liste.online",  requirements={"_locale": "en|fr"})
      */
-    public function listeJoueursEnLigne(Api $api, $page = 0): Response
+    public function listeJoueursEnLigne(Api $api, $page = 0, CmsSettings $settings): Response
     {
         $serveur_statut = $api->ServeurStatut();
         if ($serveur_statut['success']) {
