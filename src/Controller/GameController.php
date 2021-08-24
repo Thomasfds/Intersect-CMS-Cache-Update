@@ -93,7 +93,7 @@ class GameController extends AbstractController
         if ($serveur_statut['success']) {
             $playersList = json_decode(file_get_contents($this->getParameter('cache_json').'lvl.json'));
 
-            $response = new Response($this->renderView('game/level_rank.html.twig', [
+            $response = new Response($this->renderView($settings->get('theme').'/game/level_rank.html.twig', [
                 'joueurs' => $playersList,
             ]));
 
